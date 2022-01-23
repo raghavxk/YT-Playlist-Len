@@ -9,7 +9,10 @@ def main(request):
         form = URLform(request.POST)
         if form.is_valid():
             url = form.cleaned_data.get("url_of_playlist")
-            playtime = playlistId(url)
+            try:
+                playtime = playlistId(url)
+            except:
+                playtime = "Please enter a valid YouTube playlist URL."
             context = {"time": playtime}
             return render(request, "playlistLen/result.html", context)
         else:
