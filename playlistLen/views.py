@@ -15,8 +15,7 @@ def main(request):
                 playtime = "Please enter a valid YouTube playlist URL."
             context = {"time": playtime}
             return render(request, "playlistLen/result.html", context)
-        else:
-            return HttpResponse("<h1>hello</h1>")
+        
     else:
         form = URLform()
         context = {"form": form}
